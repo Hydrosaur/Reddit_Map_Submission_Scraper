@@ -60,7 +60,7 @@ function mapstoCSV(post, title){
 		setTimeout(function(){
 			console.log(jsondat);
 			JSONToCSVConvertor(jsondat, title + "_" + post,true);
-			$("button").prop('disabled', true);
+			$("button").prop('disabled', false);
 		}, sec);
 	});
 }
