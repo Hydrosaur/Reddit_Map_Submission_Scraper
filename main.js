@@ -12,15 +12,15 @@ function mapstoCSV(post, title){
 			// Check if comment is a submission
 			if(item.kind === "t1" && item.data.body.split("\n\n").length > 3){
 				item.data.body = item.data.body.split("\n\n");
-				var title = item.data.body[0].replace("**Title:** ", "").replace("\n","").replace(":", "");
-				var type = item.data.body[1].replace("**Type:** ", "").replace("\n","").replace(":", "");
-				var map = item.data.body[2].replace("**Map:** ", "").replace("\n","").replace(":", "");
+				var title = item.data.body[0].replace("**Title:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+				var type = item.data.body[1].replace("**Type:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+				var map = item.data.body[2].replace("**Map:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 				//check if Description has been added
 				if(item.data.body[4] !== undefined){
-					var preview = item.data.body[3].replace("**Preview:** ", "").replace("\n","").replace(":", "");
-					var description = item.data.body[4].replace("**Description:** ", "").replace("\n","").replace(":", "");
+					var preview = item.data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+					var description = item.data.body[4].replace("**Description:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 				} else {
-					var preview = item.data.body[3].replace("**Preview:** ", "").replace("\n","").replace(":", "");
+					var preview = item.data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 					var description = "None";
 				}
 				var text = title+" | "+type+" | "+map+" | "+preview+" | "+description;
@@ -36,15 +36,15 @@ function mapstoCSV(post, title){
 						// Check if comment is a submission
 						if(data[1].data.children[0].data.body.split("\n\n").length > 3){
 							data[1].data.children[0].data.body = data[1].data.children[0].data.body.split("\n\n");
-							var title = data[1].data.children[0].data.body[0].replace("**Title:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
-							var type = data[1].data.children[0].data.body[1].replace("**Type:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
-							var map = data[1].data.children[0].data.body[2].replace("**Map:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
+							var title = data[1].data.children[0].data.body[0].replace("**Title:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+							var type = data[1].data.children[0].data.body[1].replace("**Type:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+							var map = data[1].data.children[0].data.body[2].replace("**Map:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 							//check if Description has been added
 							if(data[1].data.children[0].data.body[4] !== undefined){
-								var preview = data[1].data.children[0].data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
-								var description = data[1].data.children[0].data.body[4].replace("**Description:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
+								var preview = data[1].data.children[0].data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
+								var description = data[1].data.children[0].data.body[4].replace("**Description:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 							} else {
-								var preview = data[1].data.children[0].data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("*", "g"), "");
+								var preview = data[1].data.children[0].data.body[3].replace("**Preview:** ", "").replace("\n","").replace(new RegExp("\*", "g"), "");
 								var description = "None";
 							}
 							var text = title+" | "+type+" | "+map+" | "+preview+" | "+description;
