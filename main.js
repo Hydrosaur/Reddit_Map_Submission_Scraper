@@ -1,6 +1,7 @@
 var jsondat = [];
 var sec = 0;
 function mapstoCSV(post, title){
+	$("button").prop('disabled', true);
 	$.get("https://api.reddit.com/r/TagPro/comments/" + post, function( data ) {
 		console.log(data[0].data.children[0].data.permalink);
 		var postlink = data[0].data.children[0].data.permalink.slice(0, -1);
@@ -57,8 +58,9 @@ function mapstoCSV(post, title){
 		});
 	}).done(function() {
 		setTimeout(function(){
-			console.log(jsondat)
-			JSONToCSVConvertor(jsondat, title + "_" + post,true)
+			console.log(jsondat);
+			JSONToCSVConvertor(jsondat, title + "_" + post,true);
+			$("button").prop('disabled', true);
 		}, sec);
 	});
 }
